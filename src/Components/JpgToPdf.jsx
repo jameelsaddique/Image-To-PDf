@@ -99,11 +99,11 @@ const ImageToPDF = () => {
 
         <input
           type="file"
-          accept="image/jpeg,image/png"
+          accept="image/*"
           multiple
           capture="environment"
           onChange={handleFileChange}
-          className="input-group"
+          className="file-input"
         />
 
         <div className="image-preview">
@@ -116,12 +116,11 @@ const ImageToPDF = () => {
           Convert to PDF
         </button>
       </div>
-      <footer className="footer">
-  <p>&copy; {new Date().getFullYear()} Design and Develop by Jameel . All rights reserved.</p>
-</footer>
 
+      <footer className="footer">
+        <p>&copy; {new Date().getFullYear()} Design and Developed by Jameel. All rights reserved.</p>
+      </footer>
     </div>
-    
   );
 };
 
