@@ -36,12 +36,10 @@ const ImageToPDF = () => {
       const reader = new FileReader();
       reader.onload = function (e) {
         const imgData = e.target.result;
-
         const img = new Image();
         img.onload = function () {
           const pageWidth = pdf.internal.pageSize.getWidth();
           const pageHeight = pdf.internal.pageSize.getHeight();
-
           const ratio = Math.min(pageWidth / img.width, pageHeight / img.height);
           const imgWidth = img.width * ratio;
           const imgHeight = img.height * ratio;
@@ -97,15 +95,31 @@ const ImageToPDF = () => {
           Drag and drop images here
         </div>
 
-        <input
-          type="file"
-          accept="image/*"
-          multiple
-          capture="environment"
-          onChange={handleFileChange}
-          className="file-input"
-        />
+        {/* Add from Gallery */}
+        <label className="upload-button">
+          📁 Add from Gallery
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleFileChange}
+            style={{ display: 'none' }}
+          />
+        </label>
 
+        {/* Take Photo */}
+        <label className="upload-button">
+          📷 Take a Photo
+          <input
+            type="file"
+            accept="image/*"
+            capture="environment"
+            onChange={handleFileChange}
+            style={{ display: 'none' }}
+          />
+        </label>
+
+        {/* Preview Images */}
         <div className="image-preview">
           {images.map(({ preview }, index) => (
             <img key={index} src={preview} alt={`preview-${index}`} />
